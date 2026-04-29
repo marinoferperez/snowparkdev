@@ -3,6 +3,7 @@ import os
 import yaml
 
 # os.system(f"conda init")
+# os.system(f"conda init")
 # os.system(f"conda activate snowpark")
 directory_path= sys.argv[1]
 
