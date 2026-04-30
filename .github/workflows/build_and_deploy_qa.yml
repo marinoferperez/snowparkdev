@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          repository: pradeepetl/snowparkdev
+          repository: marinoferperez/snowparkdev
           #path: dev
           ref: qa
           
@@ -28,7 +28,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install Python packages
-        run: pip install -r requirements.txt
+        run: pip install -r first_snowpark_project/requirements.txt
 
       - name: Deploy Snowpark apps
         working-directory: first_snowpark_project
