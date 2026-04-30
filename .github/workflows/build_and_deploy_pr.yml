@@ -40,6 +40,7 @@ jobs:
           SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE_PR }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE_PR }}
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE_PR }}
+          SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA_PR }}
         run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
       
       - name: Deploy Snowpark tasks
