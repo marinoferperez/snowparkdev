@@ -1,6 +1,6 @@
 name: Deploy de project 1
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   push:
     branches:
@@ -33,15 +33,14 @@ jobs:
           repository: marinoferperez/snowparkdev
           #path: dev
           ref: dev
-          
+
       - name: Setup Python 3.9
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
       - name: Install Python packages
-        run: pip install -r requirements.txt
-      
+        run: pip install -r DE_PROJECT_1/requirements.txt
 
       - name: Setup snowcli
         uses: Snowflake-Labs/snowflake-cli-action@main
@@ -52,7 +51,7 @@ jobs:
       - name: copy sql file
         working-directory: DE_PROJECT_1/app
         run: snow stage copy load_to_emp_tgt.sql @dev_deployment/my_de_project_1/
-      
+
       - name: Deploy Snowpark apps
         working-directory: DE_PROJECT_1
         env:
@@ -63,7 +62,7 @@ jobs:
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE_DEV }}
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE_DEV }}
         run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/DE_PROJECT_1
-      
+
       - name: Deploy Snowpark tasks
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT_DEV }}
@@ -75,15 +74,9 @@ jobs:
           SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA_DEV }}
         working-directory: DE_PROJECT_1/app
         run: python create_task.py
-
-
-
-
-
-
 # name: Deploy Snowpark Apps
 
-# # Controls when the action will run. 
+# # Controls when the action will run.
 # on:
 #   push:
 #     branches:
@@ -104,7 +97,7 @@ jobs:
 #           repository: marinoferperez/snowparkdev
 #           #path: dev
 #           ref: dev
-          
+
 #       - name: Setup Python 3.12
 #         uses: actions/setup-python@v4
 #         with:
@@ -123,7 +116,7 @@ jobs:
 #           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE_DEV }}
 #           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE_DEV }}
 #         run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
-      
+
 #       - name: Deploy Snowpark tasks
 #         env:
 #           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT_DEV }}
